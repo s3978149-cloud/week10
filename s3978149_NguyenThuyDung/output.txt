@@ -1,0 +1,5 @@
+John: john.doe@gmail.com
+Support: support@gmail.com
+CP: contact@company.com
+Admin: support@gmail.com
+Jane: jande_doe@gmail.com
