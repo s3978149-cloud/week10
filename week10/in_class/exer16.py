@@ -33,38 +33,20 @@ def filter_csv_by_min_value(input_csv, output_csv, column_name, min_value):
     except Exception as e:
         print(f"Error processing files: {e}")
 
+
 """_sum
-    """
+"""
+def largest_power_of_5(n):
+    power = 1  # start with 5^0
+
+    while power * 5 < n:
+        power *= 5  # move to next power of 5
+
+    return power
 
 
-def most_similar_suffix(query):
-    # Read strings from file
-    with open("strings.txt", "r") as file:
-        strings = [line.strip() for line in file]
-
-    max_length = 0
-    result = []
-
-    for s in strings:
-        # Find common suffix length
-        i = 1
-        while i <= min(len(s), len(query)) and s[-i] == query[-i]:
-            i += 1
-
-        common_length = i - 1
-
-        # Update result list
-        if common_length > max_length:
-            max_length = common_length
-            result = [s]
-        elif common_length == max_length and common_length > 0:
-            result.append(s)
-
-    return result
-
-
-# Main body
-print(most_similar_suffix("talking"))
+n = int(input())  # read input
+print(largest_power_of_5(n))
 
 
 """_sum

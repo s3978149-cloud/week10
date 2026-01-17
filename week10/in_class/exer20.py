@@ -55,6 +55,44 @@ def clean_transactions(input_csv, clean_csv, bad_rows_txt):
         print(f"Error processing files: {e}")
 
 
+"""_sum
+"""
+def next_word(word):
+    counts = {}  # dictionary to count next words
+
+    # read file line by line
+    with open("input.txt", "r") as file:
+        for line in file:
+            words = line.strip().split()  # split sentence into words
+
+            # check each word except the last one
+            for i in range(len(words) - 1):
+                if words[i] == word:
+                    next_w = words[i + 1]  # word after input word
+                    counts[next_w] = counts.get(next_w, 0) + 1
+
+    if not counts:
+        return []
+
+    # find highest frequency
+    max_count = max(counts.values())
+
+    # collect all words with highest frequency
+    result = []
+    for w in counts:
+        if counts[w] == max_count:
+            result.append(w)
+
+    return result
+
+
+print(next_word("I"))  # expected ['like']
+print(next_word("like"))  # expected ['apples', 'bananas']
+
+
+"""_sum
+"""
+
 def sum_by_category(clean_csv):
     category_totals = {}
     try:

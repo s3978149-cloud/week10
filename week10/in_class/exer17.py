@@ -36,6 +36,25 @@ def count_actions(input_csv):
     return action_counts
 
 
+"""_sum
+"""
+def email_search(input_file, output_file, email):
+    with open(input_file, "r") as fin, open(output_file, "w") as fout:
+        for line in fin:
+            line = line.strip()  # remove newline
+            if email in line:  # check substring
+                fout.write(line + "\n")  # write matching line
+
+
+email = input("Enter email address: ")
+email_search("input.txt", "output.txt", email)
+
+print("Search completed. Check output.txt")
+
+
+"""_sum
+"""
+
 def write_action_report(counts, output_path):
     try:
         with open(output_path, "w") as outfile:

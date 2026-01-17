@@ -36,6 +36,34 @@ def find_duplicate_ids(input_csv):
     return duplicates
 
 
+"""_sum
+"""
+def best_seller(sales):
+    num_products = len(sales[0])  # number of columns
+    totals = [0] * num_products  # total sales per product
+
+    # sum sales for each product
+    for day in sales:
+        for i in range(num_products):
+            totals[i] += day[i]
+
+    # find index of highest total
+    best_index = 0
+    for i in range(1, num_products):
+        if totals[i] > totals[best_index]:
+            best_index = i
+
+    return best_index
+
+
+sales_data = [[10, 20, 15], [15, 20, 35], [20, 25, 15], [9, 30, 35]]
+
+print(best_seller(sales_data))  # expected 2
+
+
+"""_sum
+"""
+
 def write_duplicates(duplicates, output_path):
     try:
         with open(output_path, "w") as outfile:

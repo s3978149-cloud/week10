@@ -47,6 +47,33 @@ def average_score_per_subject(input_csv):
     }
     return avg_dict
 
+"""_sum
+"""
+import csv
+
+
+def most_profitable_product(category):
+    max_profit = -1  # highest profit found
+    best_product = ""  # product id with highest profit
+
+    with open("sales.csv", "r") as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            if row["category"] == category:
+                profit = int(row["profit"])  # convert profit to int
+                if profit > max_profit:
+                    max_profit = profit
+                    best_product = row["product_id"]
+
+    return best_product
+
+
+print(most_profitable_product("Electronics"))  # expected P003
+print(most_profitable_product("Books"))  # expected P008
+
+
+"""_sum
+"""
 
 def write_subject_averages(avg_dict, output_path):
     try:
